@@ -1,0 +1,8 @@
+/node_modules
+.vscode
+.DS_Store
+.env
+*.log
+.idea/*
+.wwp-cache/
+/dist

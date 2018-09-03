@@ -1,0 +1,26 @@
+@import-normalize;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--link a, a:visited, a:active, a:link;
+@custom-selector :--list ol, ul, li;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs);
+  overflow-x: hidden;
+}
+
+body {
+  margin : 0;
+  font-size: 1rem;
+  min-height: 100vh;
+}
+
+:--heading,
+:--list,
+p {
+  padding: 0;
+  margin: 0;
+}
