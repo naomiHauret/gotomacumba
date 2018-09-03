@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react"
+import Default from "app/views/templates/Default"
 
-const Home = () => <div>
-  Hooome
-</div>
+const Home = (props) => {
+  return <Default>Home</Default>
+}
 
 export default Home

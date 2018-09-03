@@ -1,5 +1,7 @@
 export default {
   ui: {
-    hello: "Bonjour",
-  }
+    home: "Le Macumba",
+    parties: "Nos soirées",
+    team: "L'équipe",
+  },
 }

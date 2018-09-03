@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import { LocaleContext } from "app/contexts/Locale"
 import dotize from "dotize"
-import en from "app/translations/en";
+import en from "app/translations/en"
 import fr from "app/translations/fr"
 
 class Translate extends PureComponent {
@@ -11,12 +11,12 @@ class Translate extends PureComponent {
       langs: {
         en: dotize.convert(en),
         fr: dotize.convert(fr),
-      }
+      },
     }
   }
   render() {
-    const {langs} = this.state
-    const {id} = this.props
+    const { langs } = this.state
+    const { id } = this.props
 
     return <LocaleContext.Consumer>{(value) => langs[value][id]}</LocaleContext.Consumer>
   }

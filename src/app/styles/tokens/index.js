@@ -1,78 +1,96 @@
-import DesignSystem from 'design-system-utils'
+import DesignSystem from "design-system-utils"
+
+const palette = {
+  primary: {
+    dark: "hsl(267, 38.7, 14.7)",
+    light: "hsl(0, 0, 100)",
+    pink: "hsl(349, 100, 63)",
+    blue: "hsl(181, 79, 54)",
+    yellow: "hsl(47, 95, 52)",
+  },
+  secondary: {
+    light: "hsl(229, 14, 30)",
+    dark: "hsl(254, 45, 23)",
+    blue: "hsl(181, 79, 54, 0.1)",
+  },
+}
 
 //
 // Design system
 // Units are in px
 //
 export const myDesignSystem = {
-    // Typography related
-    // font size, weight, line-height, family
-    type: {
-        baseFontSize: 16,
-        sizes: {
-            xs: 12,
-            s: 14,
-            base: 16,
-            m: 18,
-            l: 20,
-            xl: 24,
-            xxl: 36,
-            txl: 48,
-            qxl: 56,
-        },
-        fontFamily: {},
-        lineHeight: {},
-        fontWeight: {},
+  // Typography related
+  // font size, weight, line-height, family
+  type: {
+    baseFontSize: 18,
+    sizes: {
+      xs: 14,
+      s: 16,
+      base: 18,
+      m: 20,
+      l: 24,
+      xl: 36,
+      xxl: 36,
+      txl: 48,
     },
-
-    // Color related
-    // colors, backgrounds
-    colors: {
-        brand: {
-            red: '#e82219',
-            deeporange: '#ff7200',
-            orange: '#ff9500',
-            green: '#c4d000',
-            teal: '#1aa5c8',
-            navy: '#0052da',
-        },
+    fontFamily: {
+      base:
+        '"Gotham-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+      semibold:
+        '"Gotham-Medium, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+      bold:
+        '"Gotham-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI Bold", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+      black:
+        '"Gotham-Black", -apple-system, BlinkMacSystemFont, "Segoe UI Black", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
     },
+    lineHeight: {},
+    fontWeight: {},
+  },
 
-    // Layout related
-    // Breakpoints, z-index, grid
-    breakpoints: {
-        xs: 586,
-        sm: 768,
-        md: 992,
-        lg: 1200,
-        xl: 1366,
-        xxl: 1440
+  // Color related
+  // colors, backgrounds
+  colors: {
+    ...palette,
+    brand: {
+      spotify: "hsl(141, 73, 42)",
     },
+  },
 
-    zIndex: {
-        low: 10,
-        mid: 100,
-        high: 1000,
+  // Layout related
+  // Breakpoints, z-index, grid
+  breakpoints: {
+    xs: 586,
+    sm: 768,
+    md: 992,
+    lg: 1200,
+    xl: 1366,
+    xxl: 1440,
+  },
+
+  zIndex: {
+    low: 10,
+    mid: 100,
+    high: 1000,
+  },
+
+  grid: {
+    columns: 12,
+    gutterWidth: 30,
+    width: {
+      sm: 750,
+      md: 970,
+      lg: 1170,
+      xl: 1230,
+      xxl: 1366,
     },
+  },
 
-    grid: {
-        columns: 12,
-        gutterWidth: 30,
-        width: {
-            sm: 750,
-            md: 970,
-            lg: 1170,
-            xl: 1230,
-            xxl: 1366,
-        },
-    },
-
-    // Spacing related
-    // Paddings, margins
-    spacing: {},
-
+  // Spacing related
+  // Paddings, margins
+  spacing: {},
 }
 
 export const ds = new DesignSystem(myDesignSystem, {
-    fontSizeUnit: 'rem',
+  fontSizeUnit: "rem",
 })

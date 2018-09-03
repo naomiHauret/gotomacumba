@@ -1,27 +1,41 @@
-import React from 'react'
+import React from "react"
 import Loadable from "react-loadable"
-import locales from "app/translations"
-let routes = [
+
+const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
+    transId: "ui.home",
     component: Loadable({
-      loader: () => import('./../views/pages/Home'),
+      loader: () => import("./../views/pages/Home"),
       loading() {
         return <div>Loading...</div>
-      }
+      },
     }),
     exact: true,
-    display: true,
-    sitemap: true,
+  },
+  {
+    path: "/parties",
+    name: "Parties",
+    transId: "ui.parties",
+    component: Loadable({
+      loader: () => import("./../views/pages/Parties"),
+      loading() {
+        return <div>Loading...</div>
+      },
+    }),
+  },
+  {
+    path: "/team",
+    name: "Team",
+    transId: "ui.team",
+    component: Loadable({
+      loader: () => import("./../views/pages/Team"),
+      loading() {
+        return <div>Loading...</div>
+      },
+    }),
   },
 ]
-
-locales.map(locale => routes.map(route => ({
-    ...route,
-    path: `/${locale}${route.path}`
-  })
-))
-
 
 export default routes

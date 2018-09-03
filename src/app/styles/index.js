@@ -1,34 +1,33 @@
-import { createRenderer } from 'fela'
+import { createRenderer } from "fela"
 import { mapValueToMediaQuery } from "fela-tools"
 
 // Fela plugins (exact order)
-import extend from 'fela-plugin-extend'
-import embedded from 'fela-plugin-embedded'
-import prefixer from 'fela-plugin-prefixer'
-import fallbackValue from 'fela-plugin-fallback-value'
-import namedKeys from 'fela-plugin-named-keys'
-import { ds } from 'styles/tokens'
-import { pxTo } from 'design-system-utils'
+import extend from "fela-plugin-extend"
+import embedded from "fela-plugin-embedded"
+import prefixer from "fela-plugin-prefixer"
+import fallbackValue from "fela-plugin-fallback-value"
+import namedKeys from "fela-plugin-named-keys"
+import { ds } from "styles/tokens"
+import { pxTo } from "design-system-utils"
 
-const baseFontSize = ds.get('type.baseFontSize')
-const xxsOnlyBreakpoint = pxTo((ds.bp('xs') - 1), baseFontSize, 'rem')
-const xsBreakpoint = pxTo(ds.bp('xs'), baseFontSize, 'rem')
-const smBreakpoint = pxTo(ds.bp('sm'), baseFontSize, 'rem')
-const mdBreakpoint = pxTo(ds.bp('md'), baseFontSize, 'rem')
-const lgBreakpoint = pxTo(ds.bp('lg'), baseFontSize, 'rem')
-const xlBreakpoint = pxTo(ds.bp('xl'), baseFontSize, 'rem')
-const xxlBreakpoint = pxTo(ds.bp('xxl'), baseFontSize, 'rem')
+const baseFontSize = ds.get("type.baseFontSize")
+const xxsOnlyBreakpoint = pxTo(ds.bp("xs") - 1, baseFontSize, "rem")
+const xsBreakpoint = pxTo(ds.bp("xs"), baseFontSize, "rem")
+const smBreakpoint = pxTo(ds.bp("sm"), baseFontSize, "rem")
+const mdBreakpoint = pxTo(ds.bp("md"), baseFontSize, "rem")
+const lgBreakpoint = pxTo(ds.bp("lg"), baseFontSize, "rem")
+const xlBreakpoint = pxTo(ds.bp("xl"), baseFontSize, "rem")
+const xxlBreakpoint = pxTo(ds.bp("xxl"), baseFontSize, "rem")
 
 const namedKeysPlugin = namedKeys({
-    xxsOnly: `@media (min-width: ${xxsOnlyBreakpoint})`,
-    xs: `@media (min-width: ${xsBreakpoint})`,
-    sm: `@media (min-width: ${smBreakpoint})`,
-    md: `@media (min-width: ${mdBreakpoint})`,
-    lg: `@media (min-width: ${lgBreakpoint})`,
-    xl: `@media (min-width: ${xlBreakpoint})`,
-    xxl: `@media (min-width: ${xxlBreakpoint})`,
+  xxsOnly: `@media (min-width: ${xxsOnlyBreakpoint})`,
+  xs: `@media (min-width: ${xsBreakpoint})`,
+  sm: `@media (min-width: ${smBreakpoint})`,
+  md: `@media (min-width: ${mdBreakpoint})`,
+  lg: `@media (min-width: ${lgBreakpoint})`,
+  xl: `@media (min-width: ${xlBreakpoint})`,
+  xxl: `@media (min-width: ${xxlBreakpoint})`,
 })
-
 
 /*
 **
@@ -38,17 +37,17 @@ const namedKeysPlugin = namedKeys({
 */
 
 export default () => {
-    const renderer = createRenderer({
-        plugins: [
-            extend(),
-            embedded(),
-            namedKeysPlugin,
-            prefixer(),
-            fallbackValue(),
-        ],
-    })
+  const renderer = createRenderer({
+    plugins: [extend(), embedded(), namedKeysPlugin, prefixer(), fallbackValue()],
+  })
 
-    renderer.renderStatic({ '--fs': `${baseFontSize}px` }, ':root')
+  renderer.renderStatic(
+    {
+      fontFamily: ds.get("type.fontFamily.base"),
+      fontSize: `${baseFontSize}px`,
+    },
+    "html",
+  )
 
-    return renderer
+  return renderer
 }
