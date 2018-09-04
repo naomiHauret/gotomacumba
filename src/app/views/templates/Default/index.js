@@ -4,9 +4,8 @@ import Footer from "app/views/components/layouts/Footer"
 import ScrollToTopOnMount from "app/views/components/layouts/ScrollToTopOnMount"
 import { LocaleContext } from "app/contexts/Locale"
 import { withState, compose } from "recompose"
-import Translate from "app/views/components/wrappers/Translate"
-const withDefinedLocale = withState("locale", "setLocale", "en")
 
+const withDefinedLocale = withState("locale", "setLocale", "en")
 const Default = (props) => {
   const { locale, setLocale, children } = props
 
@@ -14,7 +13,9 @@ const Default = (props) => {
     <LocaleContext.Provider value={locale}>
       <ScrollToTopOnMount />
       <Header switchLanguage={setLocale} />
-      <Fragment>{children}</Fragment>
+      <Fragment>
+        {children}
+      </Fragment>
       <Footer />
     </LocaleContext.Provider>
   )

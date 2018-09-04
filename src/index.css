@@ -1,36 +1,18 @@
-@font-face {
-  font-family: "Gotham-Regular";
-  src: url("assets/fonts/Gotham-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
+/* font face rules */
+@import "./app/styles/typographies/_font-face.css";
 
-@font-face {
-  font-family: "Gotham-Medium";
-  src: url("assets/fonts/Gotham-Medium.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
+/* custom media queries */
+@custom-media --belowDesktop (max-width: 768px);
 
-@font-face {
-  font-family: "Gotham-Black";
-  src: url("assets/fonts/Gotham-Black.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Gotham-Bold";
-  src: url("assets/fonts/Gotham-Bold.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@import-normalize;
+/* custom selectors */
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 @custom-selector :--link a, a:visited, a:active, a:link;
 @custom-selector :--list ol, ul, li;
 
+/* normalize */
+@import-normalize;
+
+/* base styles */
 * {
   box-sizing: border-box;
 }
@@ -43,6 +25,9 @@ body,
 
 html {
   overflow-x: hidden;
+  @media(--belowDesktop) {
+    font-size: var(--fs) !important;
+  }
 }
 
 body {

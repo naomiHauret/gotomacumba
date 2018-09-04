@@ -3,31 +3,12 @@ import { connect as styleConnect } from "react-fela"
 import { compose, withHandlers } from "recompose"
 import { withRouter } from "react-router-dom"
 import { Redirect } from "react-router"
-
+import Translate from "views/components/wrappers/Translate"
 const MyComponent = (props) => {
   const { styles, changeLanguage, match, location, history } = props
   return (
     <div className={styles.default}>
-      <button
-        locale="en"
-        onClick={(e) => {
-          e.preventDefault()
-          changeLanguage(e.currentTarget.getAttribute("locale"))
-          return <Redirect to="/en" />
-        }}
-      >
-        oooooooooooooooo
-      </button>
-      <button
-        locale="fr"
-        onClick={(e) => {
-          e.preventDefault()
-          changeLanguage(e.currentTarget.getAttribute("locale"))
-          return <Redirect to="/fr" />
-        }}
-      >
-        oooooooo
-      </button>
+    <Translate id="ui.hello"/>
     </div>
   )
 }

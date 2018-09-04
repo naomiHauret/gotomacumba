@@ -36,13 +36,13 @@ export const myDesignSystem = {
     },
     fontFamily: {
       base:
-        '"Gotham-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+        '"Gotham-Regular","system"',
       semibold:
-        '"Gotham-Medium, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+        '"Gotham-Medium", "system-medium"',
       bold:
-        '"Gotham-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI Bold", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+        '"Gotham-Bold", "system-bold"',
       black:
-        '"Gotham-Black", -apple-system, BlinkMacSystemFont, "Segoe UI Black", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"',
+        '"Gotham-Black", "system-bold"',
     },
     lineHeight: {},
     fontWeight: {},

@@ -49,5 +49,12 @@ export default () => {
     "html",
   )
 
+  renderer.renderStatic(
+    {
+      "--fsBelowDesktop": `${ds.get("type.sizes.m")}px`,
+    },
+    ":root",
+  )
+
   return renderer
 }

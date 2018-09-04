@@ -9,9 +9,9 @@
     }],
     "at-rule-no-unknown": [ true, {
       "ignoreAtRules": [
-        "extends",
         "import-normalize",
         "custom-selectors",
+        "custom-media",
       ]
     }],
     "unit-whitelist": ["em", "rem", "ms", "s", "%", "vh", "vw"]
