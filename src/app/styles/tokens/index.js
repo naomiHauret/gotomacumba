@@ -2,16 +2,15 @@ import DesignSystem from "design-system-utils"
 
 const palette = {
   primary: {
-    dark: "hsl(267, 38.7, 14.7)",
-    light: "hsl(0, 0, 100)",
-    pink: "hsl(349, 100, 63)",
-    blue: "hsl(181, 79, 54)",
-    yellow: "hsl(47, 95, 52)",
+    dark: "hsl(267, 38.7%, 14.7%)",
+    light: "hsl(0, 0%, 100%)",
+    pink: "hsl(303, 100%, 67%)",
+    blue: "hsl(181, 79%, 54%)",
+    yellow: "hsl(47, 95%, 52%)",
   },
   secondary: {
-    light: "hsl(229, 14, 30)",
-    dark: "hsl(254, 45, 23)",
-    blue: "hsl(181, 79, 54, 0.1)",
+    light: "hsl(229, 14%, 30%)",
+    dark: "hsl(254, 45%, 23%)",
   },
 }
 
@@ -25,24 +24,21 @@ export const myDesignSystem = {
   type: {
     baseFontSize: 18,
     sizes: {
+      "2xs": 11,
       xs: 14,
-      s: 16,
+      sm: 16,
       base: 18,
-      m: 20,
-      l: 24,
+      md: 20,
+      lg: 24,
       xl: 36,
-      xxl: 36,
-      txl: 48,
+      "2xl": 36,
+      "3xl": 48,
     },
     fontFamily: {
-      base:
-        '"Gotham-Regular","system"',
-      semibold:
-        '"Gotham-Medium", "system-medium"',
-      bold:
-        '"Gotham-Bold", "system-bold"',
-      black:
-        '"Gotham-Black", "system-bold"',
+      base: '"Gotham-Regular","system"',
+      semibold: '"Gotham-Medium", "system-medium"',
+      bold: '"Gotham-Bold", "system-bold"',
+      black: '"Gotham-Black", "system-bold"',
     },
     lineHeight: {},
     fontWeight: {},
@@ -53,10 +49,12 @@ export const myDesignSystem = {
   colors: {
     ...palette,
     brand: {
-      spotify: "hsl(141, 73, 42)",
+      spotify: "hsl(141, 73%, 42%)",
     },
   },
-
+  borderRadius: {
+    pill: 100,
+  },
   // Layout related
   // Breakpoints, z-index, grid
   breakpoints: {
@@ -65,7 +63,7 @@ export const myDesignSystem = {
     md: 992,
     lg: 1200,
     xl: 1366,
-    xxl: 1440,
+    "2xl": 1440,
   },
 
   zIndex: {
@@ -82,7 +80,7 @@ export const myDesignSystem = {
       md: 970,
       lg: 1170,
       xl: 1230,
-      xxl: 1366,
+      "2xl": 1366,
     },
   },
 

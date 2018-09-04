@@ -25,7 +25,7 @@ body,
 
 html {
   overflow-x: hidden;
-  @media(--belowDesktop) {
+  @media (--belowDesktop) {
     font-size: var(--fs) !important;
   }
 }
@@ -40,4 +40,17 @@ body {
 p {
   padding: 0;
   margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+:--link {
+  color: inherit;
+}
+
+button,
+:--link {
+  cursor: pointer;
 }

@@ -1,11 +1,13 @@
 import React from "react"
 import Loadable from "react-loadable"
-
-const routes = [
+export const homePath = "/"
+export const partiesPath = "/parties"
+export const teamPath = "/team"
+export const routes = [
   {
-    path: "/",
+    path: homePath,
     name: "Home",
-    transId: "ui.home",
+    transId: "ui.macumba",
     component: Loadable({
       loader: () => import("./../views/pages/Home"),
       loading() {
@@ -15,7 +17,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/parties",
+    path: partiesPath,
     name: "Parties",
     transId: "ui.parties",
     component: Loadable({
@@ -26,7 +28,7 @@ const routes = [
     }),
   },
   {
-    path: "/team",
+    path: teamPath,
     name: "Team",
     transId: "ui.team",
     component: Loadable({
@@ -37,5 +39,3 @@ const routes = [
     }),
   },
 ]
-
-export default routes

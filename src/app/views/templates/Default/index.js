@@ -13,9 +13,7 @@ const Default = (props) => {
     <LocaleContext.Provider value={locale}>
       <ScrollToTopOnMount />
       <Header switchLanguage={setLocale} />
-      <Fragment>
-        {children}
-      </Fragment>
+      <Fragment>{children}</Fragment>
       <Footer />
     </LocaleContext.Provider>
   )

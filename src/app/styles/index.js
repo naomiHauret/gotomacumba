@@ -17,7 +17,7 @@ const smBreakpoint = pxTo(ds.bp("sm"), baseFontSize, "rem")
 const mdBreakpoint = pxTo(ds.bp("md"), baseFontSize, "rem")
 const lgBreakpoint = pxTo(ds.bp("lg"), baseFontSize, "rem")
 const xlBreakpoint = pxTo(ds.bp("xl"), baseFontSize, "rem")
-const xxlBreakpoint = pxTo(ds.bp("xxl"), baseFontSize, "rem")
+const xxlBreakpoint = pxTo(ds.bp("2xl"), baseFontSize, "rem")
 
 const namedKeysPlugin = namedKeys({
   xxsOnly: `@media (min-width: ${xxsOnlyBreakpoint})`,
@@ -26,7 +26,7 @@ const namedKeysPlugin = namedKeys({
   md: `@media (min-width: ${mdBreakpoint})`,
   lg: `@media (min-width: ${lgBreakpoint})`,
   xl: `@media (min-width: ${xlBreakpoint})`,
-  xxl: `@media (min-width: ${xxlBreakpoint})`,
+  "2xl": `@media (min-width: ${xxlBreakpoint})`,
 })
 
 /*

@@ -1,4 +1,4 @@
-import { createComponent } from "inferno-fela"
+import { createComponent } from "react-fela"
 import { mapValueToMediaQuery } from "fela-tools"
 
 export default createComponent((props) => {
