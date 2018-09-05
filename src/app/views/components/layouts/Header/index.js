@@ -24,8 +24,8 @@ const Header = (props) => {
             <Macumba small={true} />
           </div>
         )}
-        <Grid col={6} alignItems="center" marginLeft="auto" maxWidth={`${(6 / 12) * 100}%`}>
-          <Col baseWidth={3}>
+        <Grid col={7} alignItems="center" marginLeft="auto" maxWidth={`${(7 / 12) * 100}%`}>
+          <Col baseWidth={4}>
             <Navigation links={routes} />
           </Col>
           <Col baseWidth={2}>

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 import { partiesPath } from "app/routes"
 import Macumba from "views/components/presentationals/Macumba"
 import Countdown from "views/components/presentationals/Countdown"
+import ScrollIcon from "views/components/presentationals/ScrollIcon"
 
 const Home = (props) => {
   const { styles } = props
@@ -18,7 +19,7 @@ const Home = (props) => {
         <div className={styles.titleWrapper}>
           <Macumba />
         </div>
-        <h2>
+        <h2 className={styles.rotatingTitle}>
           <Translate id="ui.next_opening" />
         </h2>
         <div className={styles.countdownWrapper}>
@@ -32,26 +33,46 @@ const Home = (props) => {
             <Translate id="ui.see_past_parties" />
           </Link>
         </div>
+        <ScrollIcon />
       </Container>
     </section>
   )
 }
 
 const baseFontSize = ds.get("type.baseFontSize")
+const rotating = () => ({
+  from: {
+    transform: "rotateY(50deg) rotateX(-25deg)",
+  },
+  to: {
+    transform: "rotateY(-50deg) rotateX(-25deg)",
+  },
+})
+
 const rules = {
   section: () => ({
     minHeight: "100vh",
     display: "flex",
     alignItems: "center",
   }),
+  rotatingTitle: () => ({
+    animationName: rotating(),
+    animationDuration: "8550ms",
+    animationTimingFunction: "ease-in-out",
+    animationIterationCount: "infinite",
+    animationDirection: "alternate-reverse",
+    color: ds.get("colors.primary.pink"),
+  }),
   titleWrapper: () => ({
-    marginBottom: pxTo(45, baseFontSize, "rem"),
+    marginBottom: pxTo(75, baseFontSize, "rem"),
   }),
   countdownWrapper: () => ({
     margin: `${pxTo(50, baseFontSize, "rem")} 0 ${pxTo(60, baseFontSize, "rem")}`,
   }),
   linkWrapper: () => ({
-    marginTop: pxTo(30, baseFontSize, "rem"),
+    margin: `${pxTo(30, baseFontSize, "rem")} 0`,
+    fontSize: pxTo(ds.get("type.sizes.xs"), baseFontSize, "rem"),
+    fontStyle: "italic",
   }),
 }
 

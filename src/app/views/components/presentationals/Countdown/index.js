@@ -20,7 +20,7 @@ class Countdown extends PureComponent {
   componentDidMount() {
     this.interval = setInterval(() => this.getTimeUntil(this.props.deadline), 1000)
   }
-  leading0(num) {
+  format(num) {
     return num < 10 ? "0" + num : num
   }
   getTimeUntil(deadline) {
@@ -39,18 +39,14 @@ class Countdown extends PureComponent {
     const { styles } = this.props
     return (
       <div className={styles.wrapper}>
-        <div>
-          {this.leading0(this.state.days)} <Translate id="countdown.days" />
-        </div>
-        <div>
-          {this.leading0(this.state.hours)} <Translate id="countdown.hours" />
-        </div>
-        <div>
-          {this.leading0(this.state.minutes)} <Translate id="countdown.minutes" />
-        </div>
-        <div>
-          {this.leading0(this.state.seconds)} <Translate id="countdown.seconds" />
-        </div>
+        {["days", "hours", "minutes", "seconds"].map((unit) => (
+          <div key={`countdown-${unit}`} className={styles.countdownItem}>
+            <div>{this.format(this.state[unit])}</div>
+            <div className={styles.countdownUnit}>
+              <Translate id={`countdown.${unit}`} />
+            </div>
+          </div>
+        ))}
       </div>
     )
   }
@@ -64,11 +60,26 @@ const rules = {
     justifyContent: "center",
     "> div": {
       margin: `0 ${pxTo(20, baseFontSize, "rem")}`,
+      display: "flex",
+      alignItems: "flex-end",
       ":first-child": {
         marginLeft: 0,
       },
       ":last-child": {
         marginRight: 0,
+      },
+      ":not(:last-child)::after": {
+        content: ":",
+        display: "block",
+      },
+      "> div:first-child": {
+        fontSize: pxTo(56, baseFontSize, "rem"),
+        marginRight: pxTo(5, baseFontSize, "rem"),
+        fontFamily: ds.get("type.fontFamily.black"),
+      },
+      "> div:last-child": {
+        fontSize: pxTo(ds.get("type.sizes.xs"), baseFontSize, "rem"),
+        color: ds.get("colors.50p.light"),
       },
     },
   }),

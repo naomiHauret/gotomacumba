@@ -12,6 +12,20 @@ const palette = {
     light: "hsl(229, 14%, 30%)",
     dark: "hsl(254, 45%, 23%)",
   },
+  "50p": {
+    //50 percent transparent
+    light: "hsla(0, 0%, 100%, 0.5)",
+    pink: "hsla(303, 100%, 67%, 0.5)",
+    blue: "hsla(181, 79%, 54%, 0.5)",
+    yellow: "hsla(47, 95%, 52%, 0.5)",
+  },
+  macumba: {
+    pink: "hsl(300,100%,50%)",
+    purple: "hsl(247, 58%, 54%)",
+    blue: "hsl(242, 100%, 50%)",
+    pink80p: "hsla(300,100%,50%, 0.8)",
+    black: "hsl(0, 0%, 0%)",
+  },
 }
 
 //
