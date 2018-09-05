@@ -5,14 +5,11 @@ import en from "app/translations/en"
 import fr from "app/translations/fr"
 
 class Translate extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      langs: {
-        en: dotize.convert(en),
-        fr: dotize.convert(fr),
-      },
-    }
+  state = {
+    langs: {
+      en: dotize.convert(en),
+      fr: dotize.convert(fr),
+    },
   }
   render() {
     const { langs } = this.state

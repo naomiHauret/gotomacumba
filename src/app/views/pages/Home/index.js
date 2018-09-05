@@ -7,19 +7,23 @@ import { pxTo } from "design-system-utils"
 import { connect } from "react-fela"
 import { Link } from "react-router-dom"
 import { partiesPath } from "app/routes"
+import Macumba from "views/components/presentationals/Macumba"
+import Countdown from "views/components/presentationals/Countdown"
 
 const Home = (props) => {
   const { styles } = props
   return (
     <section className={styles.section}>
       <Container textAlign="center" margin="auto">
-        <h1 className={styles.smallerTitle}>
-          <Translate id="ui.macumba" />
-        </h1>
-        <h2 className={styles.biggerTitle}>
-          <Translate id="ui.next_party" />
+        <div className={styles.titleWrapper}>
+          <Macumba />
+        </div>
+        <h2>
+          <Translate id="ui.next_opening" />
         </h2>
-
+        <div className={styles.countdownWrapper}>
+          <Countdown deadline="September 29, 2018 19:00:00" />
+        </div>
         <Button brand="primary" isLink={true} href="#" size="lg">
           <Translate id="ui.join_event_on_facebook" />
         </Button>
@@ -40,17 +44,11 @@ const rules = {
     display: "flex",
     alignItems: "center",
   }),
-  smallerTitle: () => ({
-    fontSize: pxTo(ds.get("type.sizes.lg"), baseFontSize, "rem"),
-    fontFamily: ds.get("type.fontFamily.semibold"),
-    marginBottom: pxTo(20, baseFontSize, "rem"),
+  titleWrapper: () => ({
+    marginBottom: pxTo(45, baseFontSize, "rem"),
   }),
-  biggerTitle: () => ({
-    letterSpacing: "0.25ch",
-    fontFamily: ds.get("type.fontFamily.bold"),
-    fontSize: pxTo(ds.get("type.sizes.3xl"), baseFontSize, "rem"),
-    marginBottom: pxTo(35, baseFontSize, "rem"),
-    textTransform: "uppercase",
+  countdownWrapper: () => ({
+    margin: `${pxTo(50, baseFontSize, "rem")} 0 ${pxTo(60, baseFontSize, "rem")}`,
   }),
   linkWrapper: () => ({
     marginTop: pxTo(30, baseFontSize, "rem"),

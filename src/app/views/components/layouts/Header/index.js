@@ -2,20 +2,28 @@ import React from "react"
 import { ds } from "app/styles/tokens"
 import { pxTo } from "design-system-utils"
 import { connect } from "react-fela"
+import { withRouter } from "react-router"
 import Navigation from "views/components/layouts/Navigation"
+import Macumba from "views/components/presentationals/Macumba"
 import Translate from "views/components/wrappers/Translate"
 import SwitchLanguage from "views/components/layouts/SwitchLanguage"
 import Container from "views/components/wrappers/Container"
 import Grid from "views/components/wrappers/Grid"
 import Col from "views/components/wrappers/Col"
 import Button from "views/components/presentationals/Button"
-import { routes } from "app/routes"
+import { routes, homePath } from "app/routes"
+import { compose } from "recompose"
 
 const Header = (props) => {
-  const { switchLanguage, styles } = props
+  const { switchLanguage, styles, location } = props
   return (
     <header className={styles.header}>
-      <Container contained={true}>
+      <Container contained={true} display="flex" alignItems="center">
+        {location.pathname !== homePath && (
+          <div className={styles.logoWrapper}>
+            <Macumba small={true} />
+          </div>
+        )}
         <Grid col={6} alignItems="center" marginLeft="auto" maxWidth={`${(6 / 12) * 100}%`}>
           <Col baseWidth={3}>
             <Navigation links={routes} />
@@ -44,6 +52,12 @@ const rules = {
     position: "sticky",
     top: `${pxTo(stickyPoint * -1, baseFontSize, "rem")}`,
   }),
+  logoWrapper: () => ({
+    transform: "translateX(-15%)",
+  }),
 }
 
-export default connect(rules)(Header)
+export default compose(
+  withRouter,
+  connect(rules),
+)(Header)

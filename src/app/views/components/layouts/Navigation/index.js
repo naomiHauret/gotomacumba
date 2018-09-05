@@ -11,7 +11,7 @@ const Navigation = (props) => {
     <nav>
       <ul className={styles.list}>
         {links.map((link) => (
-          <li key={`navlink-${link.name}`}>
+          <li className={styles.item} key={`navlink-${link.name}`}>
             <NavLink to={link.path} className={styles.link}>
               <Translate id={link.transId} />
             </NavLink>
@@ -27,7 +27,12 @@ const rules = {
   list: () => ({
     display: "flex",
     alignItems: "center",
+    fontFamily: ds.get("type.fontFamily.bold"),
   }),
+  item: () => ({
+    margin: pxTo(15, baseFontSize, "rem"),
+  }),
+
   link: () => ({
     textDecoration: "none",
   }),
