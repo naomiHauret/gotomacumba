@@ -1,8 +1,12 @@
 import React from "react"
-import { connect } from "react-fela"
+import Grid from "views/components/wrappers/Grid"
+import Col from "views/components/wrappers/Col"
+import { ds } from "app/styles/tokens"
+import { pxTo } from "design-system-utils"
 
+const baseFontSize = ds.get("type.baseFontSize")
 const TeamGallery = (props) => {
-  const { locale, docs, pageType, styles } = props
+  const { locale, docs, pageType } = props
 
   if (docs !== null) {
     const images = docs[`${locale}`].filter((d) => d.type === pageType).map((d) => ({
@@ -10,13 +14,18 @@ const TeamGallery = (props) => {
       preview: d.data.photo.preview,
     }))
     return (
-      <div className={styles.wrapper}>
+      <Grid
+        colBaseWidth="0fr"
+        gridRowGap={`${pxTo(ds.get("grid.gutterWidth"), baseFontSize, "rem")}`}
+        col={4}
+        justifyContent="center"
+      >
         {images.map((image) => (
-          <div dimensions={image.mini.dimensions}>
+          <Col>
             <img src={image.mini.url} />
-          </div>
+          </Col>
         ))}
-      </div>
+      </Grid>
     )
   }
   return (
@@ -26,11 +35,4 @@ const TeamGallery = (props) => {
   )
 }
 
-const rules = {
-  wrapper: () => ({
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  }),
-}
-export default connect(rules)(TeamGallery)
+export default TeamGallery

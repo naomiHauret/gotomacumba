@@ -2,6 +2,8 @@ import React from "react"
 import { ds } from "app/styles/tokens"
 import { pxTo } from "design-system-utils"
 import { connect } from "react-fela"
+import { Link } from "react-router-dom"
+import { homePath, partiesPath, teamPath } from "app/routes"
 
 const baseFontSize = ds.get("type.baseFontSize")
 
@@ -28,15 +30,26 @@ const colors = {
   secondary: ds.get("colors.primary.light"),
   tertiary: ds.get("colors.primary.light"),
 }
+const routes = [homePath, teamPath, partiesPath]
 
 const Button = (props) => {
   const { size, brand, block, isLink, styles, children } = props
-
-  return isLink === true ? (
-    <a className={styles.default} {...props}>
-      {children}
-    </a>
-  ) : (
+  if (isLink === true) {
+    if (!routes.includes(props.href)) {
+      return (
+        <a className={styles.default} {...props}>
+          {children}
+        </a>
+      )
+    } else {
+      return (
+        <Link className={styles.default} to={props.href}>
+          {children}
+        </Link>
+      )
+    }
+  }
+  return (
     <button className={styles.default} {...props}>
       {children}
     </button>

@@ -62,18 +62,24 @@ const Home = (props) => {
         </div>
       </section>
       <section>
-        <h2 className={styles.sectionSplitTitle}>
-          <Translate id="ui.the_wild_ones" />
-        </h2>
-        <AppContext.Consumer>
-          {(value) => <ManagedText locale={value.locale} docs={value.docs} pageType="homepage" dataId="wild_ones" />}
-        </AppContext.Consumer>
-        <AppContext.Consumer>
-          {(value) => <TeamGallery locale={value.locale} docs={value.docs} pageType="page_t" dataId="wild_ones" />}
-        </AppContext.Consumer>
-        <Button brand="secondary" isLink={true} href={teamPath} size="md">
-          <Translate id="ui.discover_team" />
-        </Button>
+        <Container contained={true} textAlign="center">
+          <h2 className={styles.sectionSplitTitle}>
+            <Translate id="ui.the_wild_ones" />
+          </h2>
+          <div className={styles.teamSectionTextWrapper}>
+            <AppContext.Consumer>
+              {(value) => (
+                <ManagedText locale={value.locale} docs={value.docs} pageType="homepage" dataId="wild_ones" />
+              )}
+            </AppContext.Consumer>
+          </div>
+          <AppContext.Consumer>
+            {(value) => <TeamGallery locale={value.locale} docs={value.docs} pageType="page_t" dataId="wild_ones" />}
+          </AppContext.Consumer>
+          <Button brand="primary" isLink={true} href={teamPath} size="md">
+            <Translate id="ui.discover_team" />
+          </Button>
+        </Container>
       </section>
     </Fragment>
   )
@@ -175,6 +181,10 @@ const rules = {
     fontSize: pxTo(80, baseFontSize, "rem"),
     fontWeight: 100,
     transform: "rotate(-5deg)",
+  }),
+  teamSectionTextWrapper: () => ({
+    width: "50%",
+    margin: `${pxTo(30, baseFontSize, "rem")} auto ${pxTo(50, baseFontSize, "rem")}`,
   }),
 }
 

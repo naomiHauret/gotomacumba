@@ -3,7 +3,7 @@ export default {
     "80s_night_fever": "La fièvre des 80's",
     buy_a_shirt: "Acheter un t-shirt",
     discover_team: "Découvrir la team Macumba",
-    macumba: "Macumba Festival Open Air",
+    macumba: "Macumba Open Air Festival",
     join_event_on_facebook: "Rejoindre la fête sur Facebook",
     next_opening: "Prochaine ouverture",
     parties: "Soirées",

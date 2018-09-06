@@ -17,7 +17,7 @@ let plugins = [
   new HtmlPlugin({
     template: "./src/index.html",
     excludeChunks: ["base"],
-    filename: "200.html",
+    filename: "index.html",
     minify: {
       collapseWhitespace: true,
       collapseInlineTagWhitespace: true,
@@ -27,14 +27,14 @@ let plugins = [
   }),
   new AsyncChunkNamesPlugin(),
   new WebappPlugin({
-    logo: "./src/assets/favicons/64x64.png",
+    logo: "./src/assets/favicons/64x64.jpg",
     favicons: {
-      appName: "Goulash",
-      appDescription: "React starter",
+      appName: "Macumba Open Air Festival",
+      appDescription: "",
       developerName: "Naomi Hauret",
       developerURL: "https://github.com/naomihauret",
       background: "white",
-      theme_color: "cyan",
+      theme_color: "magenta",
       icons: {
         android: false,
         appleIcon: false,
@@ -48,23 +48,25 @@ let plugins = [
     },
   }),
   new SocialTagsPlugin({
-    appUrl: "",
+    appUrl: "https://gotomacumba.now.sh/",
     facebook: {
-      "og:url": "",
+      "og:url": "https://gotomacumba.now.sh/",
       "og:type": "website",
-      "og:title": "Goulash",
-      "og:description": "Yet another React Boilerplate",
-      "og:site_name": "Goulash",
+      "og:title": "Macumba Open air Festival - Vous n'êtes pas prêts !",
+      "og:description":
+        "Viens faire la fête au Macumba! On est là pour ambiancer les festivals et concerts de metal! Dancefloor endiablé, boule disco, chenille sans fin, pluie de paillettes et chansons pop... Préparez-vous, vous n'êtes pas prêts !",
+      "og:site_name": "Macumba Open air Festival",
       "og:locale": "fr_FR",
       "og:article:author": "Naomi Hauret",
       "og:image": path.resolve("src/assets/socials/facebook@1200x628.jpg"),
     },
     twitter: {
-      "twitter:card": "Goulash, yet another React boilerplate",
-      "twitter:creator": "Goulash, yet another React boilerplate",
-      "twitter:url": "#",
-      "twitter:title":  "Goulash, a React Boilerplate",
-      "twitter:description": "Goulash, another React boilerplate",
+      "twitter:card": "Macumba Open air Festival - Vous n'êtes pas prêts !",
+      "twitter:creator": "Naomi Hauret",
+      "twitter:url": "https://gotomacumba.now.sh/",
+      "twitter:title": "Macumba Open air Festival - Vous n'êtes pas prêts !",
+      "twitter:description":
+        "Viens faire la fête au Macumba! On est là pour ambiancer les festivals et concerts de metal! Dancefloor endiablé, boule disco, chenille sans fin, pluie de paillettes et chansons pop... Préparez-vous, vous n'êtes pas prêts !",
       "twitter:image": path.resolve("src/assets/socials/twitter@1024x512.png"),
     },
   }),
@@ -74,8 +76,8 @@ let plugins = [
   new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
   new PrerenderSPAPlugin({
     staticDir: path.join(__dirname, "dist"),
-    indexPath: path.join(__dirname, "dist", "200.html"),
-    routes: ["/"],
+    indexPath: path.resolve("./dist/index.html"),
+    routes: ["/", "/parties", "/team"],
     minify: {
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
