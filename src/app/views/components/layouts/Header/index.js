@@ -43,14 +43,11 @@ const Header = (props) => {
 }
 
 const baseFontSize = ds.get("type.baseFontSize")
-const stickyPoint = 10
 const rules = {
   header: () => ({
     display: "flex",
     fontSize: pxTo(ds.get("type.sizes.xs"), baseFontSize, "rem"),
-    padding: `${pxTo(stickyPoint * 2, baseFontSize, "rem")} 0 ${pxTo(stickyPoint, baseFontSize, "rem")}`,
-    position: "sticky",
-    top: `${pxTo(stickyPoint * -1, baseFontSize, "rem")}`,
+    padding: `${pxTo(20, baseFontSize, "rem")} 0 ${pxTo(10, baseFontSize, "rem")}`,
   }),
   logoWrapper: () => ({
     transform: "translateX(-15%)",

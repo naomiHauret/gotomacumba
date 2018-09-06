@@ -29,7 +29,11 @@ const rules = {
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridTemplateColumns: "100%",
-    backgroundColor: ds.get("colors.secondary.dark"),
+    backgroundImage: `url(${require("./../../assets/images/background.jpg")})`,
+    backgroundSize: "cover",
+    backgroundPosition: "bottom",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     color: ds.get("colors.primary.light"),
   }),
 }

@@ -17,8 +17,8 @@ const ScrollIcon = (props) => {
           ry="18.39"
           fill="none"
           stroke="currentColor"
-          stroke-miterlimit="10"
-          stroke-width="3"
+          strokeMiterlimit="10"
+          strokeWidth="3"
         />
         <circle cx="20.36" cy="21.18" r="2.08" fill="currentColor" />
       </svg>

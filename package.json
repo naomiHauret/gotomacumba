@@ -1,7 +1,7 @@
 {
-  "name": "goulash",
+  "name": "gotomacumba",
   "version": "1.0.0",
-  "description": "Yet another React base stack",
+  "description": "Assessment for a React workshop at school. The Macumba Festival Open Air is a clandestine night club aired in metal festivals and concerts around the world",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
@@ -17,7 +17,8 @@
     "css:format": "npm run css:lint && npm run css:prettify",
     "format": "npm run css:format && npm run js:prettify",
     "precommit": "npx lint-staged",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "deploy": "npm run prod:build && npx now"
   },
   "config": {
     "commitizen": {
@@ -46,6 +47,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "animejs": "^2.2.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
@@ -67,6 +69,7 @@
     "lint-staged": "^7.2.2",
     "lodash": "^4.17.10",
     "mini-css-extract-plugin": "^0.4.2",
+    "now": "^11.4.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss": "^7.0.2",
     "postcss-custom-media": "^6.0.0",
@@ -75,6 +78,8 @@
     "postcss-normalize": "^6.0.0",
     "postcss-preset-env": "^5.3.0",
     "prerender-spa-plugin": "^3.3.0",
+    "prismic-javascript": "^1.5.0",
+    "prismic-reactjs": "^0.3.1",
     "purgecss-webpack-plugin": "^1.2.1",
     "react-fela": "^8.0.0",
     "social-tags-webpack-plugin": "^1.1.0",

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Translate from "views/components/wrappers/Translate"
 import Container from "views/components/wrappers/Container"
 import Button from "views/components/presentationals/Button"
@@ -10,32 +10,52 @@ import { partiesPath } from "app/routes"
 import Macumba from "views/components/presentationals/Macumba"
 import Countdown from "views/components/presentationals/Countdown"
 import ScrollIcon from "views/components/presentationals/ScrollIcon"
+import { mapValueToMediaQuery } from "fela-tools"
+import { ContentContext } from "app/contexts/Content"
 
 const Home = (props) => {
   const { styles } = props
   return (
-    <section className={styles.section}>
-      <Container textAlign="center" margin="auto">
-        <div className={styles.titleWrapper}>
-          <Macumba />
+    <Fragment>
+      <section className={styles.sectionCountdown}>
+        <Container textAlign="center" margin="auto">
+          <div className={styles.titleWrapper}>
+            <Macumba />
+          </div>
+          <h2 className={styles.rotatingTitle}>
+            <Translate id="ui.next_opening" />
+          </h2>
+          <div className={styles.countdownWrapper}>
+            <Countdown deadline="September 29, 2018 19:00:00" />
+          </div>
+          <Button brand="secondary" isLink={true} href="#" size="lg">
+            <Translate id="ui.join_event_on_facebook" />
+          </Button>
+          <div className={styles.linkWrapper}>
+            <Link to={partiesPath}>
+              <Translate id="ui.see_past_parties" />
+            </Link>
+          </div>
+          <ScrollIcon />
+        </Container>
+      </section>
+      <section className={styles.sectionSplit}>
+        <div className={styles.sectionSplitImageWrapper}>
+          <img
+            alt=""
+            src="https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/19399632_1368945866493486_6730677755942650022_n.jpg?_nc_cat=0&oh=43a30f9f681927f731db5c505edd5261&oe=5BF74225"
+          />
         </div>
-        <h2 className={styles.rotatingTitle}>
-          <Translate id="ui.next_opening" />
-        </h2>
-        <div className={styles.countdownWrapper}>
-          <Countdown deadline="September 29, 2018 19:00:00" />
+        <div className={styles.sectionSplitContentWrapper}>
+          <div>
+            <h2 className={styles.sectionSplitTitle}>
+              <Translate id="ui.party_all_night" />
+            </h2>
+            <ContentContext.Consumer>{(value) => console.log(value)}</ContentContext.Consumer>
+          </div>
         </div>
-        <Button brand="primary" isLink={true} href="#" size="lg">
-          <Translate id="ui.join_event_on_facebook" />
-        </Button>
-        <div className={styles.linkWrapper}>
-          <Link to={partiesPath}>
-            <Translate id="ui.see_past_parties" />
-          </Link>
-        </div>
-        <ScrollIcon />
-      </Container>
-    </section>
+      </section>
+    </Fragment>
   )
 }
 
@@ -50,10 +70,13 @@ const rotating = () => ({
 })
 
 const rules = {
-  section: () => ({
+  sectionCountdown: () => ({
     minHeight: "100vh",
     display: "flex",
     alignItems: "center",
+  }),
+  sectionSplit: () => ({
+    display: "flex",
   }),
   rotatingTitle: () => ({
     animationName: rotating(),
@@ -61,18 +84,71 @@ const rules = {
     animationTimingFunction: "ease-in-out",
     animationIterationCount: "infinite",
     animationDirection: "alternate-reverse",
-    color: ds.get("colors.primary.pink"),
   }),
   titleWrapper: () => ({
     marginBottom: pxTo(75, baseFontSize, "rem"),
+    marginTop: pxTo(-25, baseFontSize, "rem"),
   }),
   countdownWrapper: () => ({
-    margin: `${pxTo(50, baseFontSize, "rem")} 0 ${pxTo(60, baseFontSize, "rem")}`,
+    margin: `${pxTo(20, baseFontSize, "rem")} 0 ${pxTo(60, baseFontSize, "rem")}`,
   }),
   linkWrapper: () => ({
     margin: `${pxTo(30, baseFontSize, "rem")} 0`,
     fontSize: pxTo(ds.get("type.sizes.xs"), baseFontSize, "rem"),
     fontStyle: "italic",
+  }),
+  sectionSplit: () => ({
+    height: "100vh",
+    display: "flex",
+  }),
+  sectionSplitImageWrapper: () => ({
+    width: `${(5 / 12) * 100}%`,
+    height: "100%",
+    padding: ` ${pxTo(ds.get("grid.gutterWidth") * 3, baseFontSize, "rem")} ${pxTo(
+      ds.get("grid.gutterWidth") * 2,
+      baseFontSize,
+      "rem",
+    )}`,
+
+    "> img": {
+      objectFit: "cover",
+      width: "100%",
+      height: "100%",
+    },
+  }),
+  sectionSplitContentWrapper: () => ({
+    width: `calc( ${7 / 12} * ${pxTo(ds.get("grid.width.md"), baseFontSize, "rem")} + ${pxTo(
+      ds.get("grid.gutterWidth"),
+      baseFontSize,
+      "rem",
+    )} )`,
+    paddingRight: pxTo(ds.get("grid.gutterWidth") * 2, baseFontSize, "rem"),
+    margin: "auto",
+    extend: [
+      mapValueToMediaQuery(
+        {
+          lg: `calc( ${7 / 12} * ${pxTo(ds.get("grid.width.lg"), baseFontSize, "rem")} + ${pxTo(
+            ds.get("grid.gutterWidth"),
+            baseFontSize,
+            "rem",
+          )} )`,
+          xl: `calc( ${7 / 12} * ${pxTo(ds.get("grid.width.xl"), baseFontSize, "rem")} + ${pxTo(
+            ds.get("grid.gutterWidth"),
+            baseFontSize,
+            "rem",
+          )} )`,
+          "2xl": `calc( ${7 / 12} * ${pxTo(ds.get("grid.width.2xl"), baseFontSize, "rem")} + ${pxTo(
+            ds.get("grid.gutterWidth"),
+            baseFontSize,
+            "rem",
+          )} )`,
+        },
+        (value) => ({ width: value }),
+      ),
+    ],
+    "> div": {
+      width: ` ${(10 / 12) * 100}%`,
+    },
   }),
 }
 
