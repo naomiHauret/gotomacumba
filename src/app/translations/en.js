@@ -2,7 +2,7 @@ export default {
   ui: {
     "80s_night_fever": "80's Night Fever",
     buy_a_shirt: "Buy a shirt",
-    discover_team: "Discover our team",
+    discover_team: "Discover the Macumba team",
     macumba: "Macumba Open Air Festival",
     join_event_on_facebook: "Join the party on Facebook",
     next_opening: "Next opening",
@@ -12,6 +12,7 @@ export default {
     support_us: "Support us !",
     team: "The team",
     the_wild_ones: "The Wild Ones",
+    loading: "Here's a magnificent dinosaur while we look for words",
   },
   countdown: {
     days: "days",

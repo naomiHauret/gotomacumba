@@ -6,12 +6,14 @@ import { ds } from "app/styles/tokens"
 import { pxTo } from "design-system-utils"
 import { connect } from "react-fela"
 import { Link } from "react-router-dom"
-import { partiesPath } from "app/routes"
+import { partiesPath, teamPath } from "app/routes"
 import Macumba from "views/components/presentationals/Macumba"
 import Countdown from "views/components/presentationals/Countdown"
+import ManagedText from "views/components/presentationals/ManagedText"
 import ScrollIcon from "views/components/presentationals/ScrollIcon"
 import { mapValueToMediaQuery } from "fela-tools"
-import { ContentContext } from "app/contexts/Content"
+import { AppContext } from "app/contexts/App"
+import TeamGallery from "views/components/presentationals/TeamGallery"
 
 const Home = (props) => {
   const { styles } = props
@@ -51,9 +53,27 @@ const Home = (props) => {
             <h2 className={styles.sectionSplitTitle}>
               <Translate id="ui.party_all_night" />
             </h2>
-            <ContentContext.Consumer>{(value) => console.log(value)}</ContentContext.Consumer>
+            <AppContext.Consumer>
+              {(value) => (
+                <ManagedText locale={value.locale} docs={value.docs} pageType="homepage" dataId="what_is_macumba" />
+              )}
+            </AppContext.Consumer>
           </div>
         </div>
+      </section>
+      <section>
+        <h2 className={styles.sectionSplitTitle}>
+          <Translate id="ui.the_wild_ones" />
+        </h2>
+        <AppContext.Consumer>
+          {(value) => <ManagedText locale={value.locale} docs={value.docs} pageType="homepage" dataId="wild_ones" />}
+        </AppContext.Consumer>
+        <AppContext.Consumer>
+          {(value) => <TeamGallery locale={value.locale} docs={value.docs} pageType="page_t" dataId="wild_ones" />}
+        </AppContext.Consumer>
+        <Button brand="secondary" isLink={true} href={teamPath} size="md">
+          <Translate id="ui.discover_team" />
+        </Button>
       </section>
     </Fragment>
   )
@@ -149,6 +169,12 @@ const rules = {
     "> div": {
       width: ` ${(10 / 12) * 100}%`,
     },
+  }),
+  sectionSplitTitle: () => ({
+    fontFamily: "Yellowtail",
+    fontSize: pxTo(80, baseFontSize, "rem"),
+    fontWeight: 100,
+    transform: "rotate(-5deg)",
   }),
 }
 

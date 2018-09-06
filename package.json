@@ -18,7 +18,7 @@
     "format": "npm run css:format && npm run js:prettify",
     "precommit": "npx lint-staged",
     "commit": "git-cz",
-    "deploy": "npm run prod:build && npx now"
+    "deploy": "npx now"
   },
   "config": {
     "commitizen": {

@@ -6,18 +6,26 @@ import { compose, withState, lifecycle } from "recompose"
 import Header from "app/views/components/layouts/Header"
 import Footer from "app/views/components/layouts/Footer"
 import ScrollToTopOnMount from "app/views/components/layouts/ScrollToTopOnMount"
-import { LocaleContext } from "app/contexts/Locale"
-import { ContentContext } from "app/contexts/Content"
+import { AppContext } from "app/contexts/App"
+import Blazy from "blazy"
 
 const withDefinedLocale = withState("locale", "setLocale", "en")
 const withFetchedContent = compose(
-  withState("doc", "", null),
+  withState("docs", "", null),
   lifecycle({
+    componentDidMount() {
+      return new Blazy({ selector: "img" })
+    },
     componentWillMount() {
       Prismic.api(config.apiEndpoint).then((api) => {
         api.query("", { lang: "*" }).then((response) => {
           if (response) {
-            this.setState({ doc: response.results })
+            this.setState({
+              docs: {
+                en: response.results.filter((doc) => doc.uid.includes("en--_")),
+                fr: response.results.filter((doc) => doc.uid.includes("fr--_")),
+              },
+            })
           }
         })
       })
@@ -25,17 +33,15 @@ const withFetchedContent = compose(
   }),
 )
 const Default = (props) => {
-  const { locale, setLocale, doc, children } = props
+  const { locale, setLocale, docs, children } = props
 
   return (
-    <LocaleContext.Provider value={locale}>
-      <ContentContext.Provider value={doc}>
-        <ScrollToTopOnMount />
-        <Header switchLanguage={setLocale} />
-        <Fragment>{children}</Fragment>
-        <Footer />
-      </ContentContext.Provider>
-    </LocaleContext.Provider>
+    <AppContext.Provider value={{ locale: locale, docs: docs }}>
+      <ScrollToTopOnMount />
+      <Header switchLanguage={setLocale} />
+      <Fragment>{children}</Fragment>
+      <Footer />
+    </AppContext.Provider>
   )
 }
 
