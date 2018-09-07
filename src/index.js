@@ -3,7 +3,6 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider as FelaProvider } from "react-fela"
 import { rehydrate } from "fela-dom"
-
 import App from "app/views"
 import createRenderer from "app/styles"
 import "index.css"

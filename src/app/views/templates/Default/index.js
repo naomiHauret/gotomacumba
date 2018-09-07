@@ -7,15 +7,11 @@ import Header from "app/views/components/layouts/Header"
 import Footer from "app/views/components/layouts/Footer"
 import ScrollToTopOnMount from "app/views/components/layouts/ScrollToTopOnMount"
 import { AppContext } from "app/contexts/App"
-import Blazy from "blazy"
 
 const withDefinedLocale = withState("locale", "setLocale", "en")
 const withFetchedContent = compose(
   withState("docs", "", null),
   lifecycle({
-    componentDidMount() {
-      return new Blazy({ selector: "img" })
-    },
     componentWillMount() {
       Prismic.api(config.apiEndpoint).then((api) => {
         api.query("", { lang: "*" }).then((response) => {

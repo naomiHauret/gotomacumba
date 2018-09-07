@@ -9,6 +9,8 @@ import fallbackValue from "fela-plugin-fallback-value"
 import namedKeys from "fela-plugin-named-keys"
 import { ds } from "styles/tokens"
 import { pxTo } from "design-system-utils"
+import customCursor from "assets/images/cursor.png"
+import customPointerCursor from "assets/images/click.png"
 
 const baseFontSize = ds.get("type.baseFontSize")
 const xxsOnlyBreakpoint = pxTo(ds.bp("xs") - 1, baseFontSize, "rem")
@@ -40,6 +42,8 @@ export default () => {
   const renderer = createRenderer({
     plugins: [extend(), embedded(), namedKeysPlugin, prefixer(), fallbackValue()],
   })
+
+  renderer.renderStatic({ cursor: `url(${customCursor}) 97 8, auto` }, "*")
 
   renderer.renderStatic(
     {

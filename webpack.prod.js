@@ -11,6 +11,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const AsyncChunkNamesPlugin = require("webpack-async-chunk-names-plugin")
 const CompressionPlugin = require('brotli-webpack-plugin')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const common = require('./webpack.common.js')
 
 let plugins = [
@@ -72,6 +73,10 @@ let plugins = [
   }),
   new PurgeCssPlugin({
     paths: glob.sync([path.join(__dirname, "./src/**/*.html"), path.join(__dirname, "./src/**/*.js")]),
+  }),
+  new LodashModuleReplacementPlugin({
+    collections: true,
+    paths: true,
   }),
   new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
   new PrerenderSPAPlugin({
